@@ -2,8 +2,9 @@ import { Form, Input, InputNumber, DatePicker, Modal, message, Button } from 'an
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ITEM} from '../utils/mutations';
+import moment from 'moment';
 
-const ItemFormModal = ({ handleSubmit }) => {
+const ItemFormModal = () => {
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
   const [addItem, { loading }] = useMutation(ADD_ITEM);
@@ -13,9 +14,12 @@ const ItemFormModal = ({ handleSubmit }) => {
       const values = await form.validateFields();
       console.log('Values before input:', values);
       
-      await addItem({
-        variables: {
-          date: values.date.format('YYYY-MM-DD'),
+      const{date} = values;
+      const dateString = moment(date).format('YYYY-MM-DD');
+      
+      const item ={
+      
+          date: dateString,
           city: values.city,
           hotel: values.hotel,
           details: values.details,
@@ -23,13 +27,16 @@ const ItemFormModal = ({ handleSubmit }) => {
           accomodation: values.accomodation,
           food: values.food,
           activities: values.activities
-        }
-      });
+        };
+       
+
+      await addItem({
+        variables: item});
       
-      console.log('Values after input:', values);
+      console.log('Values after input:', item);
 
       message.success('Item added successfully!');
-      handleSubmit(addItem);
+      // handleSubmit();
       setVisible(false);
       form.resetFields();
     } catch (error) {
@@ -73,8 +80,8 @@ const ItemFormModal = ({ handleSubmit }) => {
           <Form.Item name="hotel" label="Hotel" rules={[{ required: true }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="details" label="Details">
-            <Input.TextArea />
+          <Form.Item name="details" label="Details" rules={[{ required: true }]}>
+          <Input />
           </Form.Item>
           <Form.Item
             name="flights"
@@ -96,9 +103,15 @@ const ItemFormModal = ({ handleSubmit }) => {
             rules={[{ type: 'number', min: 0, required: true }]}
           >
             <InputNumber style={{ width: '100%' }} />
+          
           </Form.Item>
-          <Form.Item name="activities" label="Activities">
-            <Input.TextArea />
+          <Form.Item
+            name="activities"
+            label="Activities"
+            rules={[{ type: 'number', min: 0, required: true }]}
+          >
+            <InputNumber style={{ width: '100%' }} />
+          
           </Form.Item>
         </Form>
       </Modal>

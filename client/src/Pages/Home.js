@@ -8,7 +8,7 @@ function Home() {
     <Defaultlayout>
 
    <h1> Home </h1>
-   <ItemFormModal />
+   <ItemFormModal/>
    
 
     </Defaultlayout>

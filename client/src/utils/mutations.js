@@ -5,11 +5,11 @@ mutation addItem(
   $date:String!
   $city: String!
   $hotel: String!
-  $details: String
-  $flights: Float
-  $accomodation: Float
-  $food: Float
-  $activities: Float
+  $details: String!
+  $flights: Float!
+  $accomodation: Float!
+  $food: Float!
+  $activities: Float!
 ) {
   addItem(
     date: $date
@@ -21,7 +21,7 @@ mutation addItem(
     food: $food
     activities: $activities
   ) {
-    item {
+    
       _id
       date
       city
@@ -31,10 +31,11 @@ mutation addItem(
       accomodation
       food
       activities
-    }
+    
   }
 }
 `;
+
 
 
 export const ADD_USER = gql`
