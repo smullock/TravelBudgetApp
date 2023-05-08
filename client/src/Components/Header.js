@@ -8,11 +8,13 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+
+  
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-primary text-light mb-4 py-3 flex-row align-center  ">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="text-light" to="/">
+          <Link className="text-light row justify-content-center align-items-center" to="/">
             <h1 className="m-0">Travel Budget Planner</h1>
           </Link>
          
@@ -29,9 +31,9 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
+              {/* <Link className="btn btn-lg btn-info m-2" to="/login">
                 Login
-              </Link>
+              </Link> */}
               
             </>
           )}

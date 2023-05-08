@@ -1,28 +1,17 @@
-import { gql } from '@apollo/client';
-
-export const GET_CATEGORIES = gql`
-  query GetCategories {
-    categories {
-      _id
-      name
-    }
-  }
-`;
+import { gql } from "@apollo/client";
 
 export const GET_ITEMS = gql`
-  query GetItems {
+  query getItems {
     items {
       _id
       date
       city
       hotel
       details
-      budgets {
-        category
-        amount
-      }
-    
-      totalBudget
+      flights
+      accomodation
+      food
+      activities
     }
   }
 `;

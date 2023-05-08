@@ -23,11 +23,14 @@ const Login = (props) => {
     }
   };
 
+
+
+
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <h4 className="card-header bg-dark text-light p-2 row justify-content-center align-items-center">Login</h4>
           <div className="card-body">
             {data ? (
               <Alert message="Success! You may now head back to the homepage." type="success" />

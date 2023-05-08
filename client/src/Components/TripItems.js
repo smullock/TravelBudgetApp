@@ -1,31 +1,82 @@
-import React from 'react'
-import { GET_ITEMS} from '../utils/queries';
+import React, { useEffect, useState } from "react";
+import { Table } from "antd";
+import { useQuery } from "@apollo/client";
+import { GET_ITEMS } from "../utils/queries";
 
-function tripItems() {
+function TripItems() {
+  const [listItemsData, setListItemsData] = useState([]);
+  const { loading, error, data } = useQuery(GET_ITEMS);
 
-  // const { loading, error, data } = useQuery(GET_ITEMS);
+  useEffect(() => {
+    if (data) {
+      setListItemsData(data.TripItems);
+    }
+  }, [data]);
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error :</p>;
+  const columns = [
+    {
+      title: "Date",
+      dataIndex: "date",
+    },
+    {
+      title: "City",
+      dataIndex: "city",
+    },
+    {
+      title: "Hotel",
+      dataIndex: "hotel",
+    },
+    {
+      title: "Details",
+      dataIndex: "details",
+    },
+    {
+      title: "Flight Cost",
+      dataIndex: "flights",
+    },
+    {
+      title: "Accomodation Cost",
+      dataIndex: "accomodation",
+    },
+    {
+      title: "Food Cost",
+      dataIndex: "food",
+    },
+    {
+      title: "Activities",
+      dataIndex: "activities",
+    },
+    
+    {
+      title: "Actions",
+      dataIndex: "actions",
+      // render: (text, record) => {
+      //   return (
+      //     <div>
+      //       <EditOutlined
+      //         onClick={() => {
+      //           setSelectedItemForEdit(record);
+      //           setShowAddEditTransactionModal(true);
+      //         }}
+      //       />
+      //       <DeleteOutlined className="mx-3" onClick={()=>deleteTransaction(record)}/>
+      //     </div>
+      //   );
+      // },
+    },
+  ];
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :</p>;
 
   return (
-    <div>
-      {/* {data.items.map((item) => (
-        <div key={item._id}>
-          <h2>{item.city}</h2>
-          <p>Hotel: {item.hotel}</p>
-          <ul>
-            {item.budgets.map((budget) => (
-              <li key={budget.category}>
-                {budget.category}: ${budget.amount}
-              </li>
-            ))}
-          </ul>
-          <p>Total Budget: ${item.totalBudget}</p>
-        </div>
-      ))} */}
+    <div className="table-list">
+      <div className="table">
+        <Table columns={columns} dataSource={listItemsData} />
+      </div>
     </div>
   );
 }
 
-export default tripItems
+export default TripItems;
+
