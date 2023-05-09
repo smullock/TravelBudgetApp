@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
+  "homepage": "https://github.com/smullock/TravelBudgetApp",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@apollo/client": "^3.5.8",
