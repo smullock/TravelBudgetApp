@@ -1,3 +1,8 @@
+
+main {
+  background: linear-gradient(180deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%); 
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,17 +10,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  background: linear-gradient(180deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
 
-.layout{
+  
+  
 
-  margin:0 100px;
-}
-
- 
-
-header{
-  background-image: linear-gradient(0deg, #74b3ceff, #508991ff, #172a3aff, #004346ff, #09bc8aff);;
+  
   padding: 15px;
 
 }
+
+
+
+ 

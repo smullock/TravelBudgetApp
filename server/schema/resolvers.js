@@ -21,7 +21,10 @@ const resolvers = {
       const item = await Item.findById(_id);
       return item;
     },
-  }, // <-- Add closing curly brace for Query object here
+    itemId: async (parent, { itemId }) => {
+      return Item.findOne({ _id: itemId });
+    },
+  }, 
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -62,14 +65,45 @@ const resolvers = {
       return item;
     },
     
-    deleteItem: async (parent, { id }) => {
-      const item = await Item.findByIdAndDelete(id);
-      return item;
+    deleteItem: async (_, { itemId }) => {
+      try {
+        const deletedItem = await Item.findOneAndDelete({_id: itemId});
+        return deletedItem;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Error deleting item');
+      }
     },
-    updateItem: async (parent, { id, item }) => {
-      const updatedItem = await Item.findByIdAndUpdate(id, item, { new: true });
-      return updatedItem;
+
+    updateItem: async (_, { itemId, date, city, hotel, details, flights, accomodation, food, activities }) => {
+      try {
+        // Check if the item exists
+        const item = await Item.findById({_id:itemId});
+        if (!item) {
+          throw new ApolloError("Item not found", "NOT_FOUND");
+        }
+    
+        // Update the item
+        item.date = date;
+        item.city = city;
+        item.hotel = hotel;
+        item.details = details;
+        item.flights = flights;
+        item.accomodation = accomodation;
+        item.food = food;
+        item.activities = activities;
+    
+        // Save the changes
+        const updatedItem = await item.save();
+    
+        return updatedItem;
+      } catch (error) {
+        console.error("Error in updateItem resolver", error);
+        throw new ApolloError("Failed to update item", "INTERNAL_SERVER_ERROR");
+      }
     },
+
+
   }, 
 };
 

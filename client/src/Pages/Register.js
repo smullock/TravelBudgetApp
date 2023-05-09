@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-const Signup = () => {
+const Register = () => {
   const [form] = Form.useForm();
   const [addUser, { error, data }] = useMutation(ADD_USER);
   const [username, setUsername] = useState('');
@@ -31,10 +31,10 @@ const Signup = () => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2 row justify-content-center align-items-center">Sign Up</h4>
-          <div className="card-body">
+      <div className="row justify-content-center align-items-center w-60 h-80">
+        
+          <h4 className="header  text-white p-3 row justify-content-center align-items-center">Sign Up</h4>
+          <div className="body text-white p-3 row justify-content-center">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -114,9 +114,9 @@ const Signup = () => {
             )}
           </div>
         </div>
-      </div>
+    
     </main>
   );
 };
 
-export default Signup;
+export default Register;

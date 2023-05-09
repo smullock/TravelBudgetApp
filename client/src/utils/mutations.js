@@ -37,6 +37,60 @@ mutation addItem(
 `;
 
 
+export const UPDATE_ITEM = gql`
+  mutation updateItem(
+    $_id: ID!
+    $date: String!
+    $city: String!
+    $hotel: String!
+    $details: String!
+    $flights: Float!
+    $accomodation: Float!
+    $food: Float!
+    $activities: Float!
+  ) {
+    updateItem(
+      _id: $_id
+      date: $date
+      city: $city
+      hotel: $hotel
+      details: $details
+      flights: $flights
+      accomodation: $accomodation
+      food: $food
+      activities: $activities
+    ) {
+      _id
+      date
+      city
+      hotel
+      details
+      flights
+      accomodation
+      food
+      activities
+    }
+  }
+`;
+
+
+export const DELETE_ITEM = gql`
+  mutation DeleteItem($itemId: ID!) {
+  deleteItem(itemId: $itemId) {
+    _id
+    date
+    city
+    hotel
+    details
+    flights
+    accomodation
+    food
+    activities
+  }
+}
+`;
+
+
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {

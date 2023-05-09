@@ -1,74 +1,123 @@
-.App {
-  text-align: center;
-  background-image: linear-gradient(0deg, #74b3ceff, #508991ff, #172a3aff, #004346ff, #09bc8aff);;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-image: linear-gradient(0deg, #74b3ceff, #508991ff, #172a3aff, #004346ff, #09bc8aff);;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media screen and (max-width: 700px){
-.layout {
-  margin: 0 15;
-}
-}
-  
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  font-family: "Montserrat", sans-serif !important;
+}
+body,html{
+  overflow-x: hidden;
+  height: 100%;
 }
 
 .layout{
 
   margin:0 100px;
+  
 }
 
+
+
+
+
+
+.logo{
  
-
-.header{
-    background-color: teal;
+ 
+  color: rgba(255, 255, 255, 0.716);
+  margin: 0 !important;
+  cursor: pointer;
 }
+.username{
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.742);
+}
+
 
 .content{
-  height: 90vh;
-  box-shadow: 0 0 3px blue;
+  height: 85vh;
+  box-shadow: 0 0 2px gray;
+  margin-top: 20px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+
+.ant-spin-dot-item{
+  background-color: gray !important;
+}
+
+@media screen and (max-width:700px){
+  .layout{
+      margin: 0 15px;
+  }
+}
+
+
+
+.primary{
+   background-color: #1b7e14;
+   padding:5px 20px;
+   color: white;
+   border: none;
+   border-radius: 3px;
+}
+
+.secondary{
+  background-color: #ffffff;
+  padding:5px 20px;
+  color: black !important;
+  border: none;
+}
+
+.filter{
+  box-shadow: 0 0 2px gray;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+
+
+
+
+.ant-modal {
+  width: 100%;
+  height: 50%;
+  transform-origin: 85px 43px;
+  overflow: hidden;
+  height: -webkit-fill-available;
+}
+
+.anticon svg{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.active-icon{
+  color: black;
+  
+}
+.inactive-icon{
+  color: gray;
+
+}
+.ant-picker-range{
+  border: 1px solid black !important;
+}
+
+@media screen and (max-width:600px){
+  .filter{
+      overflow-x: scroll;
+  }
 }

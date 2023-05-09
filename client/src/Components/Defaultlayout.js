@@ -1,23 +1,21 @@
 import React from 'react';
+import Auth from '../utils/auth';
 
 function Defaultlayout(props) {
+
   return (
-    <div className="layout">
-      <div className="header">
-        <div>
-          <h1 className='Travel Budget Planner'></h1>
-        </div>
-      </div>
-      <div className="content flex-row justify-center mb-4">
-        <div className="col-12 col-lg-10">
-          <div className="card">
-            <h4 className="card-header bg-dark text-light p-2">My Trip to Europe  - Budget </h4>
-            {props.children}
-          </div>
-        </div>
-      </div>  
+  
+  <div className="layout">
+  <div className="header d-flex justify-content-between align-items-center">
+    <div>
+      <h1 className="logo">Travel Budget Planner</h1>
     </div>
-  )
+    
+  </div>
+
+  <div className="content">{props.children}</div>
+</div>
+  );
 }
 
 export default Defaultlayout;

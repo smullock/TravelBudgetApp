@@ -1,7 +1,8 @@
-import { Form, Input, InputNumber, DatePicker, Modal, message, Button } from 'antd';
+import { Form, Input, InputNumber, DatePicker, Modal, message, Button, Table } from 'antd';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_ITEM} from '../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_ITEM,} from '../utils/mutations';
+import { GET_ITEMS } from '../utils/queries';
 import moment from 'moment';
 
 const ItemFormModal = () => {
@@ -56,7 +57,8 @@ const ItemFormModal = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setVisible(true)}>Add Item</Button>
+    
+      <Button className = "addbutton" type="primary" onClick={() => setVisible(true)}>Add Item</Button>
       <Modal
         open={visible} // changed "open" to "visible"
         title="Add Item"
@@ -116,6 +118,7 @@ const ItemFormModal = () => {
         </Form>
       </Modal>
     </>
+    
   );
 };
 

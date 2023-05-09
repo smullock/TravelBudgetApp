@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider,createHttpLink } from '@apollo/client';
 import "./App.css";
 import { Button } from "antd";
@@ -7,11 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { setContext } from '@apollo/client/link/context';
 
 
+
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 
 import Header from './Components/Header';
+import ItemList from './Components/ItemList';
 import ItemFormModal from './Components/ItemFormModal';
 
 
@@ -49,13 +51,13 @@ function App() {
 <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          
           <div className="container">
-            
+          
             <Routes>
               <Route 
                 path="/"
-                element={<Home />}
+                element={<ProtectedRoute><Home /></ProtectedRoute>}
               />
               <Route 
                 path="/login" 
@@ -77,6 +79,10 @@ function App() {
 
 
   );
+}
+export function ProtectedRoute({ children }) {
+  const token = localStorage.getItem('id_token');
+  return token ? children : <Navigate to="/login" />;
 }
 
 export default App;
