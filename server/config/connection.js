@@ -3,4 +3,4 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://smullock:1TaP54Gf7jsGbZ0E@cluster0.zvkwjl0.mongodb.net/travelBudgetApp',)
 
 
-module.exports = mongoose.connection;
+module.exports = mongoose.connect
