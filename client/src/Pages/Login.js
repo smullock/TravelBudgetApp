@@ -28,7 +28,7 @@ const Login = (props) => {
     if (data && data.login) {
       navigate("/");
     }
-  }, []);
+  });
 
   return (
     <main className="flex-row justify-center mb-4">
